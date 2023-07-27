@@ -1,8 +1,3 @@
-# LineageOS Trust HAL
-ifeq ($(BOARD_AOSP_BASED),)
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-endif
 
 # USB permissions
 PRODUCT_COPY_FILES += \
