@@ -32,6 +32,4 @@
     <string name="lights_effects_music_awake_summary">Allow music effects only when the device is awake</string>
     <string name="lights_effects_music_always_title">Always enable music effects</string>
     <string name="lights_effects_music_always_summary">Use all audio outputs to pulse the LEDs. Blocks normal lights and charging notifications.</string>
-    <string name="switch_bar_on">On</string>
-    <string name="switch_bar_off">Off</string>
 </resources>
