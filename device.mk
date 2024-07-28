@@ -34,6 +34,9 @@ ifneq ($(BOARD_AOSP_BASED),)
 PRODUCT_COPY_FILES += device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
 endif
 
+### APEX
+PRODUCT_COMPRESSED_APEX := false
+
 # Product common configurations
 $(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
 
