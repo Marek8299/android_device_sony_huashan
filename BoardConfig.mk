@@ -17,6 +17,9 @@
 # Board device path
 DEVICE_PATH := device/sony/huashan
 
+# Do not build kernel with clang
+TARGET_KERNEL_CLANG_COMPILE := false
+
 # Board device headers
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
