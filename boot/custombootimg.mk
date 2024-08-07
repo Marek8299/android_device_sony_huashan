@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+TOYBOX_STATIC := $(PRODUCT_OUT)/utilities/toybox-init
 DEVICE_BOOTDIR := device/sony/huashan/boot
 DEVICE_CMDLINE := $(DEVICE_BOOTDIR)/cmdline.txt
 DEVICE_LOGORLE := $(DEVICE_BOOTDIR)/logo.rle
@@ -82,7 +83,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 		$(INTERNAL_ROOT_FILES) \
 		$(INSTALLED_RAMDISK_TARGET) \
 		$(INITSONY) \
-		$(TARGET_RECOVERY_ROOT_OUT)/system/bin/toybox_static \
+		$(TOYBOX_STATIC) \
 		$(PRODUCT_OUT)/utilities/keycheck \
 		$(MKBOOTIMG) $(MINIGZIP) \
 		$(INTERNAL_BOOTIMAGE_FILES)
@@ -90,10 +91,11 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(PRODUCT_OUT)/kernel \
 	$(hide) cp -a $(TARGET_RAMDISK_OUT) $(PRODUCT_OUT)/combinedroot
 	$(hide) mkdir -p $(PRODUCT_OUT)/combinedroot/bin
 
+	$(hide) cp $(TOYBOX_STATIC) $(PRODUCT_OUT)/combinedroot/bin/toybox_init
+
 	$(hide) cp $(DEVICE_LOGORLE) $(PRODUCT_OUT)/combinedroot/logo.rle
 #	$(hide) cp $(recovery_uncompressed_ramdisk) $(PRODUCT_OUT)/combinedroot/bin/
 	$(hide) cp $(PRODUCT_OUT)/utilities/keycheck $(PRODUCT_OUT)/combinedroot/bin/
-	$(hide) cp $(TARGET_RECOVERY_ROOT_OUT)/system/bin/toybox_static $(PRODUCT_OUT)/combinedroot/bin/toybox_init
 
 	$(hide) cp $(INITSONY) $(PRODUCT_OUT)/combinedroot/bin/init_sony
 	$(hide) chmod 755 $(PRODUCT_OUT)/combinedroot/bin/init_sony
