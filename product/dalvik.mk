@@ -1,5 +1,5 @@
 # Dalvik properties
-PRODUCT_VENDOR_PROPERTIES += \
+PRODUCT_PRODUCT_PROPERTIES += \
     dalvik.vm.heapstartsize=8m \
     dalvik.vm.heapgrowthlimit=192m \
     dalvik.vm.heapsize=256m \
