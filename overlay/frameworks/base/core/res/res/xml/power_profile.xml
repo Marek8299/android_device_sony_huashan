@@ -43,7 +43,8 @@
         <value>2.99</value>
         <value>3.01</value>
     </array>
-    <array name="cpu.speeds">
+    <item name="cpu.clusters.cores">2</item>
+    <array name="cpu.core_speeds.cluster0">
         <value>384000</value>
         <value>486000</value>
         <value>594000</value>
@@ -59,8 +60,8 @@
         <value>1674000</value>
         <value>1728000</value>
     </array>
-    <item name="cpu.idle">1.9</item>
-    <array name="cpu.active">
+    <item name="cpu.suspend">1.9</item>
+    <array name="cpu.core_power.cluster0">
         <value>104</value>
         <value>109</value>
         <value>113</value>
@@ -76,7 +77,7 @@
         <value>221</value>
         <value>233</value>
     </array>
-    <item name="cpu.awake">104</item>
+    <item name="cpu.idle">104</item>
     <item name="cpu.wakeup">140</item>
     <item name="battery.capacity">2330</item>
 </device>
