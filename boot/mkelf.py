@@ -136,7 +136,11 @@ def main(args):
     pagesize = offset
     segments = []
     for seg in parse_inputs(args):
-        size = os.path.getsize(seg['file'])
+        if seg["flags"] != "cmdline":
+            size = os.path.getsize(seg['file'])
+        else:
+            size = len(seg['file'])
+        
         seg['offset'] = offset
         seg['size'] = size
         segments.append(seg)
@@ -155,14 +159,19 @@ def main(args):
     for seg in segments:
         elf.seek(seg['offset'])
 
-        f = open(seg['file'], 'rb')
-        data = f.read()
+        f = None
+        if seg["flags"] != "cmdline":
+            f = open(seg['file'], 'rb')
+            data = f.read()
+        else:
+            data = seg['file']
 
         if seg['oneline']:
             data = data.splitlines()[0]
 
         elf.write(data)
-        f.close()
+        if(f):
+            f.close()
 
     elf.close()
 
