@@ -1,1 +1,0 @@
-androidboot.hardware=qcom androidboot.baseband=msm ehci-hcd.park=3 vmalloc=340M androidboot.bootdevice=msm_sdcc.1
