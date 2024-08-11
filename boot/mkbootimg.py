@@ -54,7 +54,7 @@ import sys
 from optparse import OptionParser
 from string import Template
 
-mkelf_template = Template('device/sony/huashan/boot/mkelf.py $boardname -o $output $kernel@0x80208000 $ramdisk@0x81900000,ramdisk $rpm@0x00020000,rpm, $cmdline@cmdline')
+mkelf_template = Template('device/sony/huashan/boot/mkelf.py $boardname -o $output $kernel@0x80208000 $ramdisk@0x81900000,ramdisk $rpm@0x00020000,rpm $cmdline@cmdline')
 
 def main(args):
     parser = OptionParser("usage: %prog options")
@@ -67,11 +67,17 @@ def main(args):
     parser.add_option("--base", dest="ignore_base", help="base (mkbootimg compatibility)")
     parser.add_option("--pagesize", dest="ignore_pagesize", help="pagesize (mkbootimg compatibility)")
     parser.add_option("--rpm", dest="rpm", default="device/sony/huashan/boot/RPM.bin")
+    parser.add_option("--os_version", dest="ignore_osver", help="OS version (mkbootimg compatibility)")
+    parser.add_option("--os_patch_level", dest="ignore_ospatchlvl", help="OS patch level (mkbootimg compatibility)")
+    parser.add_option("--ramdisk_offset", dest="ignore_ramdiskoffset", help="Ramdisk offset (mkbootimg compatibility; hardcoded)")
 
     (opts, args) = parser.parse_args()
 
     if(opts.boardname != ""):
         opts.boardname = "-n " + opts.boardname
+        
+    if(opts.cmdline != None):
+        opts.cmdline = "\"" + opts.cmdline + "\""
 
     os.system(mkelf_template.substitute(vars(opts)))
 
