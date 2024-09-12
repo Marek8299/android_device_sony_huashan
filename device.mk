@@ -38,7 +38,7 @@ endif
 PRODUCT_COMPRESSED_APEX := false
 
 # Product common configurations
-$(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Device product elements
 include $(LOCAL_PATH)/product/*.mk
